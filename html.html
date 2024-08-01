@@ -8,30 +8,22 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = ()=>
-        <h3 id="title" onMouseEnter={()=> console.log("mouse enter")}>
-            Hello I'm a title
-        </h3>;
-    /*
-    const h3 = React.createElement("h3", {
-        onMouseEnter: ()=> console.log("mouse enter"),
-    }, "Hello I'm a span");  // span tag 생성(tag, property, contents")
-    */
-
-    const Button = ()=>
-        <button style={{backgroundColor : "orangered"}} onClick={()=> console.log("im clicked")}>
-            Click me
-        </button>;
-    // const btn = React.createElement("button", {  // property line에 event 삽입
-    //     onClick: ()=> console.log("im clicked"),
-    //     style: {backgroundColor :"tomato"},
-    // }, "Click me");
-
-    // 만들어진 컴포넌트는 반드시 첫문자를 '대문자'로 구분하여 일반 tag와 혼동되지 않게한다.
-    const Container = ()=> (<div>
-        <Title /> 
-        <Button />
+    let counter = 0;
+    function countUp() {
+        counter = counter+1;
+        render();
+    }
+    
+    function render() {
+        ReactDOM.render(<Container/>, root);
+    }
+    function Container () {
+        return (
+        <div>
+            <h3>Total clicks {counter}</h3>
+            <button onClick={countUp}> Click me </button>
         </div>);
-    ReactDOM.render(<Container/> , root);
+    } 
+    render();
 </script>
 </html>
