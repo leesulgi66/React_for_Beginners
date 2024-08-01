@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    const title = 
+    const Title = ()=>
         <h3 id="title" onMouseEnter={()=> console.log("mouse enter")}>
             Hello I'm a title
         </h3>;
@@ -18,7 +18,7 @@
     }, "Hello I'm a span");  // span tag 생성(tag, property, contents")
     */
 
-    const Button = 
+    const Button = ()=>
         <button style={{backgroundColor : "orangered"}} onClick={()=> console.log("im clicked")}>
             Click me
         </button>;
@@ -26,7 +26,12 @@
     //     onClick: ()=> console.log("im clicked"),
     //     style: {backgroundColor :"tomato"},
     // }, "Click me");
-    const container = React.createElement("div", null, [title, Button]);
-    ReactDOM.render(container , root); // span을 root안에 배치
+
+    // 만들어진 컴포넌트는 반드시 첫문자를 '대문자'로 구분하여 일반 tag와 혼동되지 않게한다.
+    const Container = ()=> (<div>
+        <Title /> 
+        <Button />
+        </div>);
+    ReactDOM.render(<Container/> , root);
 </script>
 </html>
