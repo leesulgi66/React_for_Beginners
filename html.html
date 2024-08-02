@@ -3,23 +3,27 @@
 <body>
     <div id="root"></div>
 </body>
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const root = document.getElementById("root");
+
     function App() {
-        const [counter, setCounter] = React.useState(0);
-        const onClick = ()=>{
-            // setCounter(counter + 1);  // state의 값을 직접 입력및 변경하는 방법
-            setCounter((current)=>current+1); // 함수전달로 state의 값을 변경(항상 state의 current값을 얻을 수 있다.)
+        const [minutes, setMinutes] = React.useState();
+        const onChange = (event) => {
+            setMinutes(event.target.value);
         }
         return (
         <div>
-            <h3>Total clicks: {counter}</h3>
-            <button onClick={onClick}> Click me </button>
+            <h1>Super Converter</h1>
+            <label htmlFor="minutes">Minutes</label>
+            <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange}/>
+            <h4>You want to convert {minutes}</h4>
+            <label htmlFor="hours">Hours</label>
+            <input id="hours" placeholder="Hours" type="number"/>
         </div>);
     } 
+    const root = document.getElementById("root");
     ReactDOM.render(<App/>, root);
 </script>
 </html>
