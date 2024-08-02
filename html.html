@@ -11,7 +11,8 @@
     function App() {
         const [counter, setCounter] = React.useState(0);
         const onClick = ()=>{
-            setCounter(counter + 1);
+            // setCounter(counter + 1);  // state의 값을 직접 입력및 변경하는 방법
+            setCounter((current)=>current+1); // 함수전달로 state의 값을 변경(항상 state의 current값을 얻을 수 있다.)
         }
         return (
         <div>
