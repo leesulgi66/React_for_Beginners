@@ -7,22 +7,28 @@
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    function Btn({banana, big}) {    
-        console.log(banana + " "+ big);
-        return <button style={{
+    function Btn({text, changeValue}) {    
+        console.log(text, "was rendered")
+        return <button 
+        onClick={changeValue}
+        style={{
             backgroundColor: "tomato",
             color: "white",
             padding: "10px 20px",
             border: 0,
             borderRadius:10,
-            fontSize : big ? 25 : 16,
-        }}>{banana}</button>
+        }}>{text}</button>
     }
+    const MmorizedBtn = React.memo(Btn);
     function App() {
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = ()=> {
+            setValue("Revert Changes");
+        };
         return (
         <div>
-            <Btn banana="Save Changes" big={true}/>
-            <Btn banana="Continue" big={false}/>
+            <MmorizedBtn text={value} changeValue={changeValue}/>
+            <MmorizedBtn text="Continue" />
         </div>);
     } 
     const root = document.getElementById("root");
