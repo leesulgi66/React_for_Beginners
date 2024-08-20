@@ -9,6 +9,7 @@ function Home() {
     const json = await response.json();
     setMovies(json.data.movies);
     setLoading(false);
+    console.log(json.data.movies);
   }
   useEffect(()=>{
     getMovies();
@@ -21,8 +22,7 @@ function Home() {
         key={movie.id}
         id={movie.id}
         coverImg={movie.medium_cover_image} 
-        title={movie.title} 
-        summary={movie.summary} 
+        title={movie.title}
         genres={movie.genres}/>
     )}
     </div>}
