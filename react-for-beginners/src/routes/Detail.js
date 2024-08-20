@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 
 function Detail() {
     const {id} = useParams();
